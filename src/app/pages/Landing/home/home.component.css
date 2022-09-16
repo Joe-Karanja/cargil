@@ -1,0 +1,42 @@
+
+nz-header,
+nz-footer {
+  background: #022f5c;
+  font-size: medium;
+  color: #fff;
+  line-height: 1.5;
+  text-align: center;
+}
+mat-tab{
+  color: #023669;
+  display: inline-block;
+  font-family: Montserrat;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 60px;
+  padding: 0 18px;
+  text-transform: lowercase;
+  transition: none;
+  -webkit-transition: none;
+}
+
+#container{
+  background-image: url("src/assets/images/cocoa1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40em;
+}
+
+
+
+nz-content {
+  color: #fff;
+}
+
+nz-layout {
+  width: 93.5rem;
+}
+
+
+

@@ -1,0 +1,78 @@
+
+<mat-card>
+  <h2>Employee Payments</h2>
+  <hr style="font-weight: bolder;margin-top: 10px;margin-left: -15px;width: 85.5em;margin-bottom: 1em">
+  <mat-card-content>
+    <div class="grid grid-cols-2 gap-8">
+      <div style="float: left">
+        <!-- Button trigger individualEmployeeModal -->
+        <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#individualEmployeeModal">
+          <i class="fa fa-upload" style="padding-right: 5px"></i> Make Employee Payments
+        </button>
+      </div>
+      <div style="float: right">
+        <input style="margin-top: 5px;margin-bottom: 10px;width: 15em;float: right" matInput  class="filter" placeholder="Search" class="form-control" #input aria-controls="sortable-table-2">
+      </div>
+    </div>
+    <nz-table nzShowSizeChanger #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+      <thead>
+      <tr style="text-align: center">
+        <th>DATE</th>
+        <th>EMPLOYEE</th>
+        <th>PHONE NUMBER</th>
+        <th>REASONS</th>
+        <th>AMOUNT</th>
+        <th>BALANCE</th>
+        <th>STATUS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{data.upload_date}}</td>
+        <td>{{data.batch_id}}</td>
+        <td>{{data.batch_name}}</td>
+        <td>{{data.last_update}}</td>
+        <td>{{data.updated_by}}</td>
+        <td>{{data.total_payout}}</td>
+        <td>{{data.payment_status}}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </mat-card-content>
+</mat-card>
+
+<!-- individualEmployeeModal -->
+<div class="modal fade" id="individualEmployeeModal" tabindex="-1" aria-labelledby="individualEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #638c1c;color: #ffffff;font: 14px 'Nunito',sans-serif;">
+        <h5 class="modal-title" id="individualEmployeeModalLabel" style="font-weight: bold;font-size: large;color: #ffffff">
+          Employee Payments</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <fieldset class="border p-2">
+          <legend class="w-auto" style="font-size: 1.0rem;color:#008000;">Payment Details</legend>
+
+          <div class="form-group">
+            <b>Employee Name</b>
+            <select name="uom" id="section" class="form-control" required="">
+            </select>
+          </div>
+          <div class="form-group">
+            <b>Amount</b>
+            <input id="amounttopay" type="text" class="form-control time24" placeholder="" required="" minlegnth="4" maxlength="7">
+          </div>
+          <div class="form-group">
+            <b>Reasons for Payments</b>
+            <textarea id="reason" type="text" class="form-control" required=""></textarea>
+          </div>
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+        <button id="book" type="button" class="btn btn-primary"><i class="fa fa-check-square-o"></i>Process Pay</button>
+      </div>
+    </div>
+  </div>
+</div>

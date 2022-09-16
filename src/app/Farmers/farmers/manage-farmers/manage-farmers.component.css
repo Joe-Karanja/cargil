@@ -1,0 +1,64 @@
+[nz-button] {
+  /*padding: 6px 12px;*/
+  margin-top: 5px;
+  padding-bottom: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+table {
+  font: 16px "Nunito Sans",sans-serif;
+  width: 102.5%;
+  margin-left: -15px;
+  height: auto;
+  margin-top: 1px;
+
+}
+th{
+  vertical-align: bottom;
+  font-size: 1rem;
+  font-weight: normal;
+  width: 12%;
+  padding-right: 10px;
+
+}
+td{
+  padding: 12px;
+  height: 5em;
+  font-size: 16.5px;
+  font-weight: normal;
+  color: #0000008a;
+}
+#btntrigger{
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+  color: #ffffff;
+  background-color: #17a2b8;
+  font: 16px "Nunito Sans",sans-serif;
+  padding: 6px 12px;
+  border-color: #0d6efd;
+}
+#book{
+  background-color: #17a2b8;
+}
+#close{
+  background-color: #6c755d;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
+.form-control {
+  margin-bottom: 10px;
+  display: block;
+  width: 90%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

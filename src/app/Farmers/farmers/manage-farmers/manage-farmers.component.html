@@ -1,0 +1,330 @@
+
+<mat-card>
+  <mat-card-content>
+    <div class="grid grid-cols-3" style="margin-top: 10px">
+      <div>
+        <!-- Button trigger addFarmersModal -->
+        <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFarmersModal">
+          <i class="fa fa-user" style="padding-right: 5px"></i> Add Farmers
+        </button>
+      </div>
+      <div style="margin-left: -17em">
+        <!-- Button trigger importFarmersModal -->
+        <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importFarmersModal"
+        style="float: left">
+          <i class="fa fa-upload" style="padding-right: 5px"></i> Import Farmers
+        </button>
+      </div>
+      <div style="float: right">
+        <button nz-button [nzSize]="size" nzType="default"
+                style="font-weight:500;font: 16px 'Nunito Sans, sans sarif';float: right;border-radius: .2rem;border-color: #17a2b8;border-color: #17a2b8;color: white;background-color:#17a2b8;padding: 6px 10px;margin-bottom: 20px;margin-right: 1%;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+          <i class="fa fa-upload" style="padding-right: 5px"></i> Download Template
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3" style="margin-bottom: 10px;">
+      <div style="float: left;margin-top: 10px">
+        <label>
+          <select name="sortable-table-2_length" aria-controls="sortable-table-2" class="form-control" style="width: 10em;height: 40px">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </label>
+      </div>
+      <div>
+
+      </div>
+      <div style="float: right;margin-top: 10px">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input class="form-control" style="width: 18em;height: 40px;float: right;color: #495057;
+    background-color: #fff;">
+      </div>
+    </div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="FULL NAME">
+        <th mat-header-cell *matHeaderCellDef>
+          FULL NAME
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="FULL NAME" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="PHONE NUMBER">
+        <th mat-header-cell *matHeaderCellDef>
+          PHONE NUMBER
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="PHONE NUMBER" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="EMAIL">
+        <th mat-header-cell *matHeaderCellDef>
+          EMAIL
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="EMAIL" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="WALLET ACCOUNT">
+        <th mat-header-cell *matHeaderCellDef>
+          WALLET ACCOUNT
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="WALLET ACCOUNT" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.wallet_account}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="WALLET BALANCE">
+        <th mat-header-cell *matHeaderCellDef>
+          WALLET BALANCE
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="WALLET BALANCE" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.wallet_balance}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="STATUS">
+        <th mat-header-cell *matHeaderCellDef>
+          STATUS
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="STATUS" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="VIEW">
+        <th mat-header-cell *matHeaderCellDef>
+          VIEW
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="VIEW" #input class="form-control">
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#approveBookingModal" style="width: 10em">
+            <i class="fa-solid fa-right-left"></i>
+            Transactions
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="MANAGE">
+        <th mat-header-cell *matHeaderCellDef>
+          MANAGE
+          <hr style="font-weight: bolder;margin-top: 11px;margin-bottom: 10px">
+          <input matInput (keyup)="applyFilter($event)" placeholder="MANAGE" class="form-control" #input>
+        </th>
+        <td mat-cell *matCellDef="let element" >
+              <button nz-button nzType="primary" nzDanger>
+                <i class="fa fa-trash" style="margin-right: 10px"></i>
+                Delete
+              </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="8">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<!-- addFarmersModal -->
+<div class="modal fade" id="addFarmersModal" tabindex="-1" aria-labelledby="addFarmersModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #638c1c;color: #ffffff;font: 14px 'Nunito',sans-serif;">
+        <h5 class="modal-title" id="addFarmersModalLabel" style="font-weight: bold;font-size: large;color: #ffffff">
+          Register New Farmers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">\
+        <form class="needs-validation" novalidate="">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="form-label"> First Name</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control " oninput="allow_alphabets(this)" required="" id="firstname" style="text-transform: capitalize;" minlength="2" maxlength="20">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6" style="display: none;">
+                <div class="form-group">
+                  <label class="form-label"> Code</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" required="" id="firstname_key" style="text-transform: capitalize;">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="form-label"> Last Name</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control " oninput="allow_alphabets(this)" required="" id="lastname" style="text-transform: capitalize;" minlength="2" maxlength="20">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="form-label"> Phonenumber</label>
+                  <div class="input-group mb-3">
+                    <div class="iti iti--allow-dropdown"><div class="iti__flag-container"><div class="iti__selected-flag" role="combobox" aria-controls="iti-0__country-listbox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="Côte d’Ivoire: +225" aria-activedescendant="iti-0__item-ci"><div class="iti__flag iti__ci"></div><div class="iti__arrow"></div></div><ul class="iti__country-list iti__hide" id="iti-0__country-listbox" role="listbox" aria-label="List of countries"><li class="iti__country iti__standard iti__active" tabindex="-1" id="iti-0__item-ci" role="option" data-dial-code="225" data-country-code="ci" aria-selected="true"><div class="iti__flag-box"><div class="iti__flag iti__ci"></div></div><span class="iti__country-name">Côte d’Ivoire</span><span class="iti__dial-code">+225</span></li><li class="iti__country iti__standard" tabindex="-1" id="iti-0__item-gh" role="option" data-dial-code="233" data-country-code="gh" aria-selected="false"><div class="iti__flag-box"><div class="iti__flag iti__gh"></div></div><span class="iti__country-name">Ghana (Gaana)</span><span class="iti__dial-code">+233</span></li><li class="iti__country iti__standard" tabindex="-1" id="iti-0__item-ke" role="option" data-dial-code="254" data-country-code="ke" aria-selected="false"><div class="iti__flag-box"><div class="iti__flag iti__ke"></div></div><span class="iti__country-name">Kenya</span><span class="iti__dial-code">+254</span></li></ul></div><input type="text" name="telNum" class="form-control" required="" id="phonenumber" minlength="10" maxlength="10" pattern="^(?:(?:\+|00)225[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$" autocomplete="off" data-intl-tel-input-id="0"></div>
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label class="form-label"> Email</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input type="email" class="form-control" required="" id="email" pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-label"> Farm Force ID</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-address"></i></span>
+                    </div>
+                    <input type="text" class="form-control" required="" id="farmforceid" minlength="2" maxlength="20">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-label"> Certificate Number</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-clipboard"></i></span>
+                    </div>
+                    <input type="text" class="form-control" required="" id="certificateno" minlength="2" maxlength="20">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Gender</label>
+                  <select class="form-control custom-select" id="genderinfo">
+                    <option value="">Male</option>
+                    <option value="">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label class="form-label"> Section</label>
+                  <select name="uom" id="section" class="form-control">
+                    <option value="1013">Yamoussoukro</option>
+                    <option value="1015">Gagnoa</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label class="form-label"> Physical Address</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                    <input type="text" class="form-control" required="" id="autocomplete" minlength="2" maxlength="20">
+                    <div class="invalid-feedback">
+                      Input Missing
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+            <button id="book" type="button" class="btn btn-primary"><i class="fa fa-save"></i>Create Account</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- importFarmersModal -->
+<div class="modal fade" id="importFarmersModal" tabindex="-1" aria-labelledby="importFarmersModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #638c1c;color: #ffffff;font: 14px 'Nunito',sans-serif;">
+        <h5 class="modal-title" id="importFarmersModalLabel" style="font-weight: bold;font-size: large;color: #ffffff">
+          Upload File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="validationDefault02" class="form-label">Upload File Here</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="postedFile" id="customFile2" required="">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          <div class="valid-feedback">
+            Please select matrix
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="book" type="button" class="btn btn-primary"><i class="fa fa-save"></i>Import Farmers</button>
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,114 @@
+
+<mat-card>
+  <h2>Bulk Farmer Payments</h2>
+  <hr style="font-weight: bolder;margin-top: 10px;margin-left: -15px;width: 85.5em;margin-bottom: 10px">
+  <mat-card-content>
+    <div class="grid grid-cols-2 gap-8">
+    <div style="float: left">
+      <!-- Button trigger bulkFarmerModal -->
+      <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bulkFarmerModal">
+        <i class="fa fa-upload" style="padding-right: 5px"></i> New Bulk Farmer Payments
+      </button>
+    </div>
+    <div style="float: right">
+      <input style="margin-top: 5px;margin-bottom: 10px;width: 15em;float: right" matInput  class="filter" placeholder="Search" class="form-control" #input aria-controls="sortable-table-2">
+    </div>
+    </div>
+
+    <nz-table nzShowSizeChanger #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+      <thead>
+      <tr style="text-align: center">
+        <th>UPLOAD DATE</th>
+        <th>BATCH ID</th>
+        <th>BATCH NAME</th>
+        <th>LAST UPDATE</th>
+        <th>UPDATED BY</th>
+        <th>TOTAL PAYOUT</th>
+        <th>PAYMENT STATUS</th>
+        <th>ACTION</th>
+        <th>PROCESS PAY</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{data.upload_date}}</td>
+        <td>{{data.batch_id}}</td>
+        <td>{{data.batch_name}}</td>
+        <td>{{data.last_update}}</td>
+        <td>{{data.updated_by}}</td>
+        <td>{{data.total_payout}}</td>
+        <td>{{data.payment_status}}</td>
+        <td>
+          <div *ngIf="data.payment_status== 'Pending'" class="grid grid-cols-2 gap-8" style="margin-bottom: 10px;">
+            <div>
+              <button nz-button [nzSize]="size" nzType="default" >
+                Get File
+              </button>
+            </div>
+            <div>
+              <button nz-button [nzSize]="size" nzType="default" style="color: #212529;background-color: #ffc107; border-color: #ffc107;">
+                <i  nz-icon nzType="download" nzTheme="outline"></i>
+                <!--                <i style="color: #212529;background-color: #ffc107; border-color: #ffc107;" class="fe fe-upload"></i>-->
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="data.payment_status == 'Uploaded'">
+            <button nz-button [nzSize]="size" nzType="primary" >
+              View Batch
+            </button>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="data.payment_status == 'Pending'">
+            <button nz-button [nzSize]="size" nzType="primary" nzDanger>
+              Pending
+            </button>
+          </div>
+
+          <div *ngIf="data.payment_status == 'Uploaded'">
+            <button nz-button [nzSize]="size" nzType="primary">
+              Process
+            </button>
+          </div>
+
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </mat-card-content>
+</mat-card>
+
+
+
+<!-- bulkFarmerModal -->
+<div class="modal fade" id="bulkFarmerModal" tabindex="-1" aria-labelledby="bulkFarmerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #638c1c;color: #ffffff;font: 14px 'Nunito',sans-serif;">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold;font-size: large;color: #ffffff">Create New Payment Batch</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <b>Batch Name</b>
+          <input id="batchName" type="text" class="form-control time24" placeholder="" required="" minlength="7" maxlength="20">
+          <div class="invalid-feedback">
+            Invalid Input
+          </div>
+        </div>
+        <div class="form-group">
+          <b>Batch ID</b>
+          <input id="id" type="text" class="form-control time24" placeholder="" value="O6VF7YRQ" readonly="">
+          <div class="invalid-feedback">
+            Invalid Input
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="book" type="button" class="btn btn-primary">Create New Batch</button>
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

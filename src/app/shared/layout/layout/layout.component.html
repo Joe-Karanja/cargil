@@ -1,0 +1,215 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="280px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo" style="margin-top: 1px;height: 150px;background-color: white">
+        <img
+          style="width: 250px;height: 120px;margin-top: 20px"
+          src="../../../../assets/images/logo/socaan_logo.jpg" alt="logo">
+    </div>
+    <hr>
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Dashboard</h3>
+      <li nz-submenu nzOpen nzTitle="Welcome" nzIcon="home">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="dashboard()">
+            <a>Dashboard</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Purchase E-Value" nzIcon="interaction" >
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="purchase()">
+            <a>Purchase E-Value</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="E-Value Disbursements" nzIcon="one-to-one">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="disbursements()">
+            <a>E-Value Disbursements</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="E-Value Requests" nzIcon="merge-cells">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="pending()">
+            <a>Pending Requests</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="all()">
+            <a>All Requests</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Payments" nzIcon="wallet">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="premium()">
+            <a>Premium Payment</a>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Bulk Payments" nzIcon="">
+            <ul>
+              <li nz-menu-item nzMatchRouter (click)="bulkFarmers()">
+                <a>Farmers</a>
+              </li>
+              <li nz-menu-item nzMatchRouter (click)="bulkEmployees()">
+                <a>Employees</a>
+              </li>
+            </ul>
+          </li>
+
+          <li nz-submenu nzOpen nzTitle="Individual Payments" nzIcon="">
+            <ul>
+              <li nz-menu-item nzMatchRouter (click)="individualEmployee()">
+                <a>Emloyee</a>
+              </li>
+              <li nz-menu-item nzMatchRouter (click)="individualSupplier()">
+                <a>Supplier</a>
+              </li>
+            </ul>
+          </li>
+
+          <li nz-menu-item nzMatchRouter (click)="paymentSettings()">
+            <a>Payment Settings</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Interface</h3>
+      <li nz-submenu nzOpen nzTitle="Farmforce Payments" nzIcon="team">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="viewRecords()">
+            <a>View Records</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Farmers</h3>
+      <li nz-submenu nzOpen nzTitle="Farmers" nzIcon="team">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="manageFarmers()">
+            <a>Manage Farmers</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Buyers</h3>
+      <li nz-submenu nzOpen nzTitle="Cocoa Buyers" nzIcon="user">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="manageBuyers()">
+            <a>Manage Buyers</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="disRecords()">
+            <a>Disbursement Records</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Stakeholders</h3>
+      <li nz-submenu nzOpen nzTitle="Stakeholders" nzIcon="home">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="dashboard()">
+            <a>Stakeholders</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <h3>Reports</h3>
+      <li nz-submenu nzOpen nzTitle="Reports" nzIcon="file-done">
+        <ul>
+          <li nz-menu-item nzMatchRouter (click)="evalueBookingsReports()">
+            <a>E-Value Bookings</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="disbursementsReports()">
+            <a>Disbursements</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="transactionsReports()">
+            <a>Transactions</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="premiumPaymentsRecords()">
+            <a>Premium Payments</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="supplierPaymentsRecords()">
+            <a>Supplier Payments</a>
+          </li>
+          <li nz-menu-item nzMatchRouter (click)="employeePaymentsRecords()">
+            <a>Employee Payments</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="right-layout">
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+      </div>
+      <div>
+        <nz-card style="width:1250px;background-color: #00000008;margin-left: 10px;height: 8em">
+          <div class="grid grid-cols-2">
+            <div style="width: 50em; margin-right: 20em">
+              <h2 style="font-weight: bolder">Welcome Marc Zogoury</h2>
+              <P style="font-weight: bolder">Manager</P>
+            </div>
+            <div class="right" style="float: right;margin-left: 25em">
+              <div class="notification d-flex">
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell faa-ring animated" style="font-size: 20px; float: left; color: black">
+                    </i>
+                    <span id="bell" class="badge badge-danger">8</span>
+
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right right_chat list-unstyled list" style="width:350% !important;">
+                    <li class="offline">
+                      <a class="btn btn-success btn-sm" href="/gestion_de_la_valeur_%C3%A9lectronique/r%C3%A9server_la_valeur_%C3%A9lectronique">
+                        View All Requests
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+
+
+                <div title="Request culture provider: AcceptLanguageHeaderRequestCultureProvider">
+                  <form id="selectLanguage" method="post" class="" role="form" action="/Culture/SetCulture?returnUrl=~%2Fbuyers%2Fdossiers_de_d%C3%A9caissement">
+                    <select name="culture" class="form-control custom-select" onchange="this.form.submit();" data-val="true" data-val-required="The Name field is required." id="requestCulture_RequestCulture_UICulture_Name">
+                      <option selected="selected" value="en">English</option>
+                      <option value="fr">French</option>
+                    </select>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ac4HXheBd9Eju0RtAsmmFMyajEgqUyh_hGAwv_DssDUOCPKDBcNl4fLWHkxmZGMSMJvoVqHl0vbBNl-jm3cecHB-a52Xbe5ROmL-f8BcMNViu2ooro2OFMT55FOUL3reaRSZX8OzQ3fNnWeH1bOFleVt611kiPsiZR1YqiCjUweh48SkBrm5hWi2V_p4cIl4w"></form>
+                </div>
+                <form method="post" id="logoutForm" action="/Identity/Account/Logout?returnUrl=%2F">
+                  <button type="submit" class="btn btn-facebook btn-sm"><i class="fa fa-power-off mr-2"></i>Sign Out</button>
+                  <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ac4HXheBd9Eju0RtAsmmFMyajEgqUyh_hGAwv_DssDUOCPKDBcNl4fLWHkxmZGMSMJvoVqHl0vbBNl-jm3cecHB-a52Xbe5ROmL-f8BcMNViu2ooro2OFMT55FOUL3reaRSZX8OzQ3fNnWeH1bOFleVt611kiPsiZR1YqiCjUweh48SkBrm5hWi2V_p4cIl4w"></form>
+              </div>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+    </nz-header>
+    <nz-content>
+        <nz-card style="width:1250px;height: auto;margin-top: 80px;background-color: #00000008;margin-left: 10px">
+          <router-outlet></router-outlet>
+        </nz-card>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

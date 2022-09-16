@@ -1,0 +1,84 @@
+
+<mat-card>
+  <mat-card-title style="color: #000000;background-color: #00000008;font:19px 'Nunito Sans, sans sarif';padding: 12px 20px">
+    Payments Range Settings
+  </mat-card-title>
+  <hr style="font-weight: bolder;margin-top: 5px;margin-bottom: 15px">
+  <mat-card-content>
+    <!-- Button trigger paymentSettingsModal -->
+    <button id="btntrigger" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentSettingsModal">
+      <i class="fa fa-plus" style="padding-right: 5px"></i> Create New Payment Period
+    </button>
+    <nz-table nzShowSizeChanger #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+      <thead>
+      <tr style="text-align: center">
+        <th>SECTION IDX</th>
+        <th>PAYMENT TYPE</th>
+        <th>PERIOD</th>
+        <th>DATE CREATED</th>
+        <th>DELETE</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of nzTable.data">
+        <td>{{data.section_idx}}</td>
+        <td>{{data.payment_type}}</td>
+        <td>{{data.period}}</td>
+        <td>{{data.date_created}}</td>
+        <td>
+            <button nz-button [nzSize]="size" nzType="primary" nzDanger style="width: 100%;text-align: center">
+              <i class="fa fa-trash" style="padding: 5px"></i>
+              Delete Period
+            </button>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </mat-card-content>
+</mat-card>
+
+<!-- paymentSettingsModal -->
+<div class="modal fade" id="paymentSettingsModal" tabindex="-1" aria-labelledby="paymentSettingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #638c1c;color: #ffffff;font: 14px 'Nunito',sans-serif;">
+        <h5 class="modal-title" id="paymentSettingsModalLabel" style="font-weight: bold;font-size: large;color: #ffffff">
+          Assign Bulk Payment Duration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <label for="validationCustom01">Select Bulk Payment Type</label>
+            <select id="bulkpay" class="form-control">
+              <option value="Premium Payments">Premium Payments</option>
+              <option value="Bulk Farmer Payments">Bulk Farmer Payments</option>
+              <option value="Bulk Employee Payments">Bulk Employee Payments</option>
+              <option value="Other Bulk Farmer Payments">Other Bulk Farmer Payments</option>
+            </select>
+            <div class="valid-feedback">
+              Duration Missing
+            </div>
+          </div>
+          <div class="col-lg-12" style="padding-top:1%;">
+            <b>Maximum Duration in Days</b>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+              </div>
+              <input type="text" class="form-control" required="" id="duration" value="" size="5" minlength="0" min="1" maxlength="5">
+              <div class="invalid-feedback">
+                Invalid Input
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+        <button id="book" type="button" class="btn btn-primary"><i class="fa fa-save"></i>Set Period</button>
+      </div>
+    </div>
+  </div>
+</div>
+

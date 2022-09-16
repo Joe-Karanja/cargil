@@ -1,0 +1,124 @@
+
+<div class="grid grid-cols-4 gap-4" style="margin-bottom: 20px;">
+  <div>
+    <nz-card>
+      <h3 style="padding-top: 0px; font-family: 'Noto Sans';font-size: 20px">E-Value Balance</h3>
+      <h3 style="font-size: 30px;color: black;padding-bottom: 5px">
+        8 082 790,00
+      </h3>
+      <span style="color: red;font-size: 20px;font-family: 'Noto Sans'" class="text-success mr-2">On</span>
+      7/3/2022
+
+    </nz-card>
+  </div>
+
+  <div>
+    <nz-card>
+      <h3 style="padding-top: 0px; font-family: 'Noto Sans';font-size: 20px">Total E-Value Disbursed</h3>
+      <h3 style="font-size: 30px;color: black;padding-bottom: 5px">
+        8 082 790,00
+      </h3>
+      <span style="color: red;font-size: 20px;font-family: 'Noto Sans'" class="text-success mr-2">On</span>
+      7/3/2022
+
+    </nz-card>
+  </div>
+
+  <div>
+    <nz-card>
+      <h3 style="padding-top: 0px; font-family: 'Noto Sans';font-size: 20px">Transaction Count</h3>
+      <h3 style="font-size: 30px;color: black;padding-bottom: 5px">
+        64
+      </h3>
+      <span style="color: red;font-size: 20px;font-family: 'Noto Sans'" class="text-success mr-2">On</span>
+      7/3/2022
+
+    </nz-card>
+  </div>
+
+  <div>
+    <nz-card style="font-family: Arial, Helvetica, sans-serif">
+      <h3 style="padding-top: 0px; font-family: 'Noto Sans';font-size: 20px">Farmers</h3>
+
+      <i class="fa fa-users" style="font-size: xx-large;font-weight: bolder;color: black;padding-bottom: 20px">   4</i>
+      <br>
+      <span style="color: red;font-size: 20px;font-family: 'Noto Sans'" class="text-success mr-2">On</span>
+      7/3/2022
+    </nz-card>
+  </div>
+</div>
+
+
+<div class="grid grid-cols-2 gap-2" style="margin-bottom: 20px;">
+  <div>
+    <nz-card nzTitle="E-Value Disbursed" style="width: 700px">
+      <app-bar-charts></app-bar-charts>
+    </nz-card>
+  </div>
+
+  <div>
+    <nz-card nzTitle="Farmer Cashout Channels" style="width: 300px; margin-left: 10em">
+
+
+    </nz-card>
+  </div>
+
+
+  <div>
+    <nz-card nzTitle="Latest Buyer Topup Transactions" style="width: 1200px;margin-top:20px;height: auto">
+
+      <nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+        <thead>
+        <tr>
+          <th>DATE</th>
+          <th>BUYER ID</th>
+          <th>BUYER</th>
+          <th>PHONENUMBER</th>
+          <th>WALLET ID</th>
+          <th>BALANCE</th>
+          <th>STATUS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of sortTable.data">
+          <td>{{data.date}} <br> {{data.time}}</td>
+          <td>{{data.buyerId}}</td>
+          <td>{{data.buyer}}</td>
+          <td>{{data.phoneNumber}}</td>
+          <td>{{data.walletId}}</td>
+          <td>{{data.balance}}</td>
+          <td>{{data.status}}</td>
+        </tr>
+        </tbody>
+      </nz-table>
+
+
+<!--      <nz-table #basicTable [nzData]="data ">-->
+<!--        <thead>-->
+<!--        <tr style="text-align: center">-->
+<!--          <th>DATE</th>-->
+<!--          <th>BUYER ID</th>-->
+<!--          <th>BUYER</th>-->
+<!--          <th>PHONENUMBER</th>-->
+<!--          <th>WALLET ID</th>-->
+<!--          <th>BALANCE</th>-->
+<!--          <th>STATUS</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let data of data ">-->
+<!--          <td>{{data.date}} <br> {{data.time}}</td>-->
+<!--          <td>{{data.buyerId}}</td>-->
+<!--          <td>{{data.buyer}}</td>-->
+<!--          <td>{{data.phoneNumber}}</td>-->
+<!--          <td>{{data.walletId}}</td>-->
+<!--          <td>{{data.balance}}</td>-->
+<!--          <td>{{data.status}}</td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </nz-table>-->
+    </nz-card>
+  </div>
+
+</div>
+
